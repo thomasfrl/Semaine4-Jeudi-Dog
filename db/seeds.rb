@@ -27,6 +27,9 @@ end
 end
 
 40.times do 
-    s = Stroll.create!(date: Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today), chien_id: Chien.all.sample.id, dog_sitter_id: DogSitter.all.sample.id)
+    s = Stroll.create!(date: Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today), dog_sitter_id: DogSitter.all.sample.id)
 end
 
+80.times do
+    jt = TableJoinDogStroll.create!(chien_id: Chien.all.sample.id, stroll_id: Stroll.all.sample.id)
+end

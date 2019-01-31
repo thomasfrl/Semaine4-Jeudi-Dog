@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_145959) do
+ActiveRecord::Schema.define(version: 2019_01_31_211453) do
 
   create_table "chiens", force: :cascade do |t|
     t.string "name"
@@ -30,10 +30,15 @@ ActiveRecord::Schema.define(version: 2019_01_31_145959) do
 
   create_table "strolls", force: :cascade do |t|
     t.date "date"
-    t.integer "chien_id"
     t.integer "dog_sitter_id"
-    t.index ["chien_id"], name: "index_strolls_on_chien_id"
     t.index ["dog_sitter_id"], name: "index_strolls_on_dog_sitter_id"
+  end
+
+  create_table "table_join_dog_strolls", force: :cascade do |t|
+    t.integer "chien_id"
+    t.integer "stroll_id"
+    t.index ["chien_id"], name: "index_table_join_dog_strolls_on_chien_id"
+    t.index ["stroll_id"], name: "index_table_join_dog_strolls_on_stroll_id"
   end
 
 end
